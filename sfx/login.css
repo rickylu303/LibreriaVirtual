@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+    --white: #fff;
+    --orange: #C45632;
+    --black: #1b1b1b;
+    --gray: #373D4C;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.loginContainer{
+    background: var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.login{
+    width: 800px;
+    min-height: 400px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #222;
+    display: flex;
+    box-shadow: 15px 5px 30px rgba(0,0,0,0.3);
+}
+
+.loginContent{
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--orange);
+    transition: 0.5s;
+}
+
+.loginContent img{
+    width: 100%;
+}
+
+.loginContent:hover img{
+    transform: scale(1.2);
+}
+
+.loginForm{
+    flex-basis: 50%;
+    background: #333;
+    padding: 25px;
+}
+
+.loginForm h1{
+    text-align: center;
+    margin-top: 25px;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--white);
+}
+
+.tbox{
+    border-radius: 3px;
+    background: transparent;
+    outline: none;
+    border: 1px solid var(--orange);
+    width: 100%;
+    height: 35px;
+    margin: 30px 0;
+}
+
+.tbox input{
+    background: transparent;
+    width: 90%;
+    outline: none;
+    border: 0;
+    padding-left: 5px;
+    color: var(--white);
+}
+
+::placeholder{
+    color: #777;
+}
+
+.tbox i{
+    color: var(--white);
+    font-size: 15px;
+    padding: 7px;
+}
+
+.btn{
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 12px;
+    font-size: 18px;
+}
+
+.social{
+    margin-top: 25px;
+    list-style: none;
+    text-align: center;
+}
+
+.social li{
+    display: inline-block;
+}
+.social li i{
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    border: 1px solid var(--orange);
+    border-radius: 50%;
+    font-size: 18px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+/*Responsive Design*/
+@media(max-width: 768px){
+    .login{
+        flex-direction: column;
+        margin: 0 15px;
+    }
+}
