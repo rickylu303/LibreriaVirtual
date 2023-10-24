@@ -1,0 +1,520 @@
+-- Conectarse a la base de datos
+USE libreriavirtual;
+
+-- Crear la tabla de usuario
+CREATE TABLE usuario (
+    ID_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(25),
+    Apellido VARCHAR(25),
+    Correo_electrónico VARCHAR(50),
+    username VARCHAR(20) UNIQUE,
+    Contraseña VARCHAR(20),
+    Genero VARCHAR(10),
+    IsActive TINYINT(1)
+);
+
+-- Crear la tabla de autores
+CREATE TABLE autor (
+    ID_autor INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Apellido VARCHAR(50),
+    Fecha_de_nacimiento DATE,
+    Fecha_de_muerte DATE,
+    País VARCHAR(50),
+    Descripcion TEXT
+);
+
+-- Crear la tabla de editorial
+CREATE TABLE editorial (
+    ID_editorial INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100),
+    País VARCHAR(50)
+);
+
+-- Crear la tabla de generos literarios
+CREATE TABLE generos_literarios (
+    ID_genero INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50)
+);
+
+-- Crear la tabla de libros
+CREATE TABLE libro (
+    ID_libro INT AUTO_INCREMENT PRIMARY KEY,
+    Título VARCHAR(100),
+    Precio DECIMAL(10, 2),
+    Descripción TEXT,
+    Sinopsis TEXT,
+    Fecha_de_publicación DATE,
+    image_url TEXT,
+    pdf_url TEXT,
+    ID_editorial INT,
+    FOREIGN KEY (ID_editorial) REFERENCES editorial(ID_editorial)
+);
+
+-- Crear la tabla de relacion muchos a muchos entre libro y autores
+CREATE TABLE autores_libros (
+    ID_autor INT,
+    ID_libro INT,
+    PRIMARY KEY (ID_autor, ID_libro),
+    FOREIGN KEY (ID_autor) REFERENCES autor(ID_autor),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+-- Crear la tabla de relacion de muchos a muchos entre editorial y libro
+CREATE TABLE editoriales_libros (
+    ID_editorial INT,
+    ID_libro INT,
+    PRIMARY KEY (ID_editorial, ID_libro),
+    FOREIGN KEY (ID_editorial) REFERENCES editorial(ID_editorial),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+-- Crear la tabla de relacion de muchos a muchos entre los generos literarios y los libros 
+CREATE TABLE generos_libros (
+    ID_genero INT,
+    ID_libro INT,
+    PRIMARY KEY (ID_genero, ID_libro),
+    FOREIGN KEY (ID_genero) REFERENCES generos_literarios(ID_genero),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+-- Crear la tabla de relacion de muchos a muchos entre autor y genero literario
+CREATE TABLE autores_generos (
+    ID_autor INT,
+    ID_genero INT,
+    PRIMARY KEY (ID_autor, ID_genero),
+    FOREIGN KEY (ID_autor) REFERENCES autor(ID_autor),
+    FOREIGN KEY (ID_genero) REFERENCES generos_literarios(ID_genero)
+);
+
+-- Crear la tabla de relacion de muchos a muchos entre usuario y libro para valoraciones
+CREATE TABLE usuario_valoraciones ( 
+    ID_usuario INT,
+    ID_libro INT,
+    Puntuación INT,
+    PRIMARY KEY (ID_usuario, ID_libro),
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+-- Crear la tabla de relacion de muchos a muchos a muchos entre usuario y libro para favoritos (lista deseados)
+CREATE TABLE favoritos (
+    ID_usuario INT,
+    ID_libro INT,
+    Fecha_de_agregado DATE,
+    PRIMARY KEY (ID_usuario, ID_libro),
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+-- Crear la tabla de Venta
+CREATE TABLE venta (
+    ID_venta INT AUTO_INCREMENT PRIMARY KEY,
+    ID_usuario INT,
+    Fecha_de_venta DATE,
+    Descuento INT,
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID_usuario)
+);
+
+-- Crear la tabla de detalle de venta
+CREATE TABLE detalle_venta (
+    ID_venta INT,
+    ID_libro INT,
+    PRIMARY KEY (ID_venta, ID_libro),
+    FOREIGN KEY (ID_venta) REFERENCES venta(ID_venta),
+    FOREIGN KEY (ID_libro) REFERENCES libro(ID_libro)
+);
+
+
+-- Procedimientos Almacenados
+
+DELIMITER //
+
+CREATE PROCEDURE CrearNuevoUsuario(
+    IN p_Nombre VARCHAR(50),
+    IN p_Apellido VARCHAR(50),
+    IN p_Correo_electronico VARCHAR(100),
+    IN p_Username VARCHAR(20),
+    IN p_Contraseña VARCHAR(50),
+    IN p_Genero VARCHAR(10)
+)
+BEGIN
+    -- Verificar si el nombre de usuario ya existe
+    DECLARE username_exists INT;
+    SELECT COUNT(*) INTO username_exists FROM usuario WHERE username = p_Username;
+    
+    IF username_exists = 0 THEN
+        -- Insertar el nuevo usuario si el nombre de usuario no existe
+        INSERT INTO usuario (Nombre, Apellido, Correo_electrónico, username, Contraseña, Genero)
+        VALUES (p_Nombre, p_Apellido, p_Correo_electronico, p_Username, p_Contraseña, p_Genero);
+        
+        SELECT 'Usuario creado con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearNuevoAutor(
+    IN p_Nombre VARCHAR(50),
+    IN p_Apellido VARCHAR(50),
+    IN p_Fecha_de_nacimiento DATE,
+    IN p_Fecha_de_muerte DATE,
+    IN p_Pais VARCHAR(50),
+    IN p_Descripcion TEXT
+)
+BEGIN
+    -- Insertar el nuevo autor
+    INSERT INTO autor (Nombre, Apellido, Fecha_de_nacimiento, Fecha_de_muerte, País, Descripcion)
+    VALUES (p_Nombre, p_Apellido, p_Fecha_de_nacimiento, p_Fecha_de_muerte, p_Pais, p_Descripcion);
+    
+    SELECT 'Autor creado con éxito.' AS Resultado;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearNuevaEditorial(
+    IN p_Nombre VARCHAR(50),
+    IN p_Pais VARCHAR(50)
+)
+BEGIN
+    -- Insertar la nueva editorial
+    INSERT INTO editorial (Nombre, País)
+    VALUES (p_Nombre, p_Pais);
+    
+    SELECT 'Editorial creada con éxito.' AS Resultado;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearNuevoGeneroLiterario(
+    IN p_Nombre VARCHAR(50)
+)
+BEGIN
+    -- Insertar el nuevo género literario
+    INSERT INTO generos_literarios (Nombre)
+    VALUES (p_Nombre);
+    
+    SELECT 'Género literario creado con éxito.' AS Resultado;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearNuevoLibro(
+    IN p_Título VARCHAR(100),
+    IN p_Precio DECIMAL(10, 2),
+    IN p_Descripción TEXT,
+    IN p_Sinopsis TEXT,
+    IN p_Fecha_de_publicación DATE,
+    IN p_ID_editorial INT
+)
+BEGIN
+    DECLARE editorial_exists INT;
+    -- Verificar si la editorial existe
+    SELECT COUNT(*) INTO editorial_exists FROM editorial WHERE ID_editorial = p_ID_editorial;
+
+    IF editorial_exists = 1 THEN
+        -- Insertar el nuevo libro si la editorial existe
+        INSERT INTO libro (Título, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial)
+        VALUES (p_Título, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial);
+        
+        SELECT 'Libro creado con éxito.' AS Resultado;
+    ELSE
+        SELECT 'La editorial especificada no existe. Asegúrate de que el ID de la editorial sea válido.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionAutorLibro(
+    IN p_ID_autor INT,
+    IN p_ID_libro INT
+)
+BEGIN
+    DECLARE autor_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si el autor y el libro existen
+    SELECT COUNT(*) INTO autor_exists FROM autor WHERE ID_autor = p_ID_autor;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF autor_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar la relación autor-libro si ambos existen
+        INSERT INTO autores_libros (ID_autor, ID_libro)
+        VALUES (p_ID_autor, p_ID_libro);
+        
+        SELECT 'Relación autor-libro creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El autor y/o el libro especificado no existen. Asegúrate de que los IDs de autor y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionEditorialLibro(
+    IN p_ID_editorial INT,
+    IN p_ID_libro INT
+)
+BEGIN
+    DECLARE editorial_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si la editorial y el libro existen
+    SELECT COUNT(*) INTO editorial_exists FROM editorial WHERE ID_editorial = p_ID_editorial;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF editorial_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar la relación editorial-libro si ambos existen
+        INSERT INTO editoriales_libros (ID_editorial, ID_libro)
+        VALUES (p_ID_editorial, p_ID_libro);
+        
+        SELECT 'Relación editorial-libro creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'La editorial y/o el libro especificado no existen. Asegúrate de que los IDs de editorial y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionGeneroLibro(
+    IN p_ID_genero INT,
+    IN p_ID_libro INT
+)
+BEGIN
+    DECLARE genero_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si el género literario y el libro existen
+    SELECT COUNT(*) INTO genero_exists FROM generos_literarios WHERE ID_genero = p_ID_genero;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF genero_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar la relación género literario-libro si ambos existen
+        INSERT INTO generos_libros (ID_genero, ID_libro)
+        VALUES (p_ID_genero, p_ID_libro);
+        
+        SELECT 'Relación género literario-libro creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El género literario y/o el libro especificado no existen. Asegúrate de que los IDs de género literario y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionAutorGenero(
+    IN p_ID_autor INT,
+    IN p_ID_genero INT
+)
+BEGIN
+    DECLARE autor_exists INT;
+    DECLARE genero_exists INT;
+    
+    -- Verificar si el autor y el género literario existen
+    SELECT COUNT(*) INTO autor_exists FROM autor WHERE ID_autor = p_ID_autor;
+    SELECT COUNT(*) INTO genero_exists FROM generos_literarios WHERE ID_genero = p_ID_genero;
+
+    IF autor_exists = 1 AND genero_exists = 1 THEN
+        -- Insertar la relación autor-género literario si ambos existen
+        INSERT INTO autores_generos (ID_autor, ID_genero)
+        VALUES (p_ID_autor, p_ID_genero);
+        
+        SELECT 'Relación autor-género literario creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El autor y/o el género literario especificado no existen. Asegúrate de que los IDs de autor y género literario sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionUsuarioValoracion(
+    IN p_ID_usuario INT,
+    IN p_ID_libro INT,
+    IN p_Puntuación INT
+)
+BEGIN
+    DECLARE usuario_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si el usuario y el libro existen
+    SELECT COUNT(*) INTO usuario_exists FROM usuario WHERE ID_usuario = p_ID_usuario;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF usuario_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar la relación usuario-valoración-libro si ambos existen
+        INSERT INTO usuario_valoraciones (ID_usuario, ID_libro, Puntuación)
+        VALUES (p_ID_usuario, p_ID_libro, p_Puntuación);
+        
+        SELECT 'Relación usuario-valoración-libro creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El usuario y/o el libro especificado no existen. Asegúrate de que los IDs de usuario y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE CrearRelacionFavorito(
+    IN p_ID_usuario INT,
+    IN p_ID_libro INT,
+    IN p_Fecha_de_agregado DATE
+)
+BEGIN
+    DECLARE usuario_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si el usuario y el libro existen
+    SELECT COUNT(*) INTO usuario_exists FROM usuario WHERE ID_usuario = p_ID_usuario;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF usuario_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar la relación usuario-libro como favorito si ambos existen
+        INSERT INTO favoritos (ID_usuario, ID_libro, Fecha_de_agregado)
+        VALUES (p_ID_usuario, p_ID_libro, p_Fecha_de_agregado);
+        
+        SELECT 'Relación usuario-libro (favorito) creada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El usuario y/o el libro especificado no existen. Asegúrate de que los IDs de usuario y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE RegistrarVenta(
+    IN p_ID_usuario INT,
+    IN p_Fecha_de_venta DATE,
+    IN p_Descuento DECIMAL(10, 2)
+)
+BEGIN
+    DECLARE usuario_exists INT;
+    
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO usuario_exists FROM usuario WHERE ID_usuario = p_ID_usuario;
+
+    IF usuario_exists = 1 THEN
+        -- Insertar la venta si el usuario existe
+        INSERT INTO venta (ID_usuario, Fecha_de_venta, Descuento)
+        VALUES (p_ID_usuario, p_Fecha_de_venta, p_Descuento);
+        
+        SELECT 'Venta registrada con éxito.' AS Resultado;
+    ELSE
+        SELECT 'El usuario especificado no existe. Asegúrate de que el ID de usuario sea válido.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE RegistrarDetalleVenta(
+    IN p_ID_venta INT,
+    IN p_ID_libro INT
+)
+BEGIN
+    DECLARE venta_exists INT;
+    DECLARE libro_exists INT;
+    
+    -- Verificar si la venta y el libro existen
+    SELECT COUNT(*) INTO venta_exists FROM venta WHERE ID_venta = p_ID_venta;
+    SELECT COUNT(*) INTO libro_exists FROM libro WHERE ID_libro = p_ID_libro;
+
+    IF venta_exists = 1 AND libro_exists = 1 THEN
+        -- Insertar el detalle de venta si la venta y el libro existen
+        INSERT INTO detalle_venta (ID_venta, ID_libro)
+        VALUES (p_ID_venta, p_ID_libro);
+        
+        SELECT 'Detalle de venta registrado con éxito.' AS Resultado;
+    ELSE
+        SELECT 'La venta y/o el libro especificado no existen. Asegúrate de que los IDs de venta y libro sean válidos.' AS Resultado;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE InactivarUsuario(IN userID INT)
+BEGIN
+    DECLARE userExists INT;
+
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO userExists FROM usuario WHERE ID_usuario = userID;
+
+    -- Si el usuario existe, inactivarlo
+    IF userExists > 0 THEN
+        UPDATE usuario
+        SET IsActive = 0
+        WHERE ID_usuario = userID;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE ActualizarUsuario(
+    IN userID INT,
+    IN nuevoNombre VARCHAR(255),
+    IN nuevoApellido VARCHAR(255),
+    IN nuevoCorreoElectronico VARCHAR(255),
+    IN nuevoUsername VARCHAR(50),
+    IN nuevaContrasena VARCHAR(255),
+    IN nuevoGenero VARCHAR(10)
+)
+BEGIN
+    DECLARE usernameExists INT;
+
+    -- Verificar si el nuevo username ya existe en la tabla
+    SELECT COUNT(*) INTO usernameExists FROM usuario WHERE username = nuevoUsername AND ID_usuario <> userID;
+
+    -- Validar que el nuevo username no exista en otros registros
+    IF usernameExists = 0 THEN
+        -- Actualizar los campos del usuario
+        UPDATE usuario
+        SET
+            Nombre = nuevoNombre,
+            Apellido = nuevoApellido,
+            Correo_electronico = nuevoCorreoElectronico,
+            username = nuevoUsername,
+            Contrasena = nuevaContrasena,
+            Genero = nuevoGenero
+        WHERE ID_usuario = userID;
+    END IF;
+END //
+
+DELIMITER ;
