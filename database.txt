@@ -10,7 +10,8 @@ CREATE TABLE usuario (
     username VARCHAR(20) UNIQUE,
     Contraseña VARCHAR(20),
     Genero VARCHAR(10),
-    IsActive TINYINT(1)
+    IsActive TINYINT(1),
+    numero_telefonico VARCHAR(20)
 );
 
 -- Crear la tabla de autores
@@ -136,12 +137,13 @@ CREATE PROCEDURE CrearNuevoUsuario(
     IN p_Correo_electronico VARCHAR(100),
     IN p_Username VARCHAR(20),
     IN p_Contraseña VARCHAR(50),
-    IN p_Genero VARCHAR(10)
+    IN p_Genero VARCHAR(10),
+    IN p_numero VARCHAR(20)
 )
 BEGIN
-    -- Verificar si el nombre de usuario ya existe
+    -- Verificar si el correo ya existe
     DECLARE username_exists INT;
-    SELECT COUNT(*) INTO username_exists FROM usuario WHERE username = p_Username;
+    SELECT COUNT(*) INTO username_exists FROM usuario WHERE Correo_electronico = p_numero;
     
     IF username_exists = 0 THEN
         -- Insertar el nuevo usuario si el nombre de usuario no existe
@@ -150,7 +152,7 @@ BEGIN
         
         SELECT 'Usuario creado con éxito.' AS Resultado;
     ELSE
-        SELECT 'El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario.' AS Resultado;
+        SELECT 'El correo ya está en uso. Por favor, elige otro correo para tu usuario.' AS Resultado;
     END IF;
 END //
 
@@ -196,6 +198,24 @@ DELIMITER ;
 
 
 DELIMITER //
+CREATE PROCEDURE ActualizarEditorial(
+    IN pID_editorial INT,
+    IN pNombre VARCHAR(255),
+    IN pPais VARCHAR(255)
+)
+BEGIN
+    UPDATE editorial
+    SET
+        Nombre = pNombre,
+        Pais = pPais
+    WHERE ID_editorial = pID_editorial;
+END;
+//
+DELIMITER ;
+
+
+
+DELIMITER //
 
 CREATE PROCEDURE CrearNuevoGeneroLiterario(
     IN p_Nombre VARCHAR(50)
@@ -208,6 +228,21 @@ BEGIN
     SELECT 'Género literario creado con éxito.' AS Resultado;
 END //
 
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE ActualizarGeneroLiterario(
+    IN pID_genero INT,
+    IN pNombre VARCHAR(255)
+)
+BEGIN
+    UPDATE generos_literarios
+    SET
+        Nombre = pNombre
+    WHERE ID_genero = pID_genero;
+END;
+//
 DELIMITER ;
 
 
@@ -494,13 +529,14 @@ CREATE PROCEDURE ActualizarUsuario(
     IN nuevoCorreoElectronico VARCHAR(255),
     IN nuevoUsername VARCHAR(50),
     IN nuevaContrasena VARCHAR(255),
-    IN nuevoGenero VARCHAR(10)
+    IN nuevoGenero VARCHAR(10),
+    IN numero VARCHAR(20)
 )
 BEGIN
     DECLARE usernameExists INT;
 
-    -- Verificar si el nuevo username ya existe en la tabla
-    SELECT COUNT(*) INTO usernameExists FROM usuario WHERE username = nuevoUsername AND ID_usuario <> userID;
+    -- Verificar si el nuevo correo ya existe en la tabla
+    SELECT COUNT(*) INTO usernameExists FROM usuario WHERE Correo_electronico = nuevoCorreoElectronico AND ID_usuario <> userID;
 
     -- Validar que el nuevo username no exista en otros registros
     IF usernameExists = 0 THEN
@@ -512,9 +548,42 @@ BEGIN
             Correo_electronico = nuevoCorreoElectronico,
             username = nuevoUsername,
             Contrasena = nuevaContrasena,
-            Genero = nuevoGenero
+            Genero = nuevoGenero,
+            numero_telefonico = numero
         WHERE ID_usuario = userID;
     END IF;
 END //
 
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE ActualizarAutor(
+    IN pID_autor INT,
+    IN pNombre VARCHAR(255),
+    IN pApellido VARCHAR(255),
+    IN pFechaNacimiento DATE,
+    IN pFechaMuerte DATE,
+    IN pPais VARCHAR(255),
+    IN pDescripcion TEXT
+)
+BEGIN
+    -- Validar que la fecha de muerte no sea menor que la fecha de nacimiento
+    IF pFechaMuerte < pFechaNacimiento THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'La fecha de muerte no puede ser menor que la fecha de nacimiento';
+    ELSE
+        -- Actualizar los campos
+        UPDATE autor
+        SET
+            Nombre = pNombre,
+            Apellido = pApellido,
+            Fecha_de_nacimiento = pFechaNacimiento,
+            Fecha_de_muerte = pFechaMuerte,
+            Pais = pPais,
+            Descripcion = pDescripcion
+        WHERE ID_autor = pID_autor;
+    END IF;
+END;
+//
 DELIMITER ;

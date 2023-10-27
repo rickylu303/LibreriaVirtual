@@ -9,16 +9,16 @@ class Usuario {
     private $password;
     private $isActive;
     private $genero;
+    private $numero;
 
     // Constructor
-    public function __construct($nombre, $apellido, $email, $username, $password, $isActive, $genero) {
-        $this->nombre = $nombre;
-        $this->apellido = $apellido;
-        $this->email = $email;
-        $this->username = $username;
-        $this->password = $password;
-        $this->isActive = $isActive;
-        $this->genero = $genero;
+    public function __construct() {
+        $genero = '';
+        $username = '';
+    }
+
+    public function getIdUsuario() {
+        return $this->ID_usuario;
     }
 
     public function getNombre() {
@@ -49,6 +49,14 @@ class Usuario {
         return $this->genero;
     }
 
+    public function getNumero() {
+        return $this->numero;
+    }
+
+    public function setIdUsuario($id_usuario) {
+        $this->ID_usuario = $id_usuario;
+    }
+
     public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
@@ -77,6 +85,10 @@ class Usuario {
         $this->genero = $genero;
     }
 
+    public function setNumero($numero) {
+        $this->numero = $numero;
+    }
+
     public function crearNuevoUsuario($connection) {
         // Escapar y sanitizar los valores de entrada (para evitar inyección de SQL)
         $nombre = $this->nombre;
@@ -86,9 +98,10 @@ class Usuario {
         $contrasena = $this->password;
         $genero = $this->genero;
         $isActive = $this->isActive;
+        $numero = $this->numero;
     
         // Llamar al procedimiento almacenado "CrearNuevoUsuario"
-        $query = "CALL CrearNuevoUsuario(:nombre, :apellido, :correoElectronico, :username, :contrasena, :genero, :isActive)";
+        $query = "CALL CrearNuevoUsuario(:nombre, :apellido, :correoElectronico, :username, :contrasena, :genero, :isActive, :numero)";
         
         $consulta = $connection->prepare($query);
         $consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
@@ -98,6 +111,7 @@ class Usuario {
         $consulta->bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
         $consulta->bindParam(':genero', $genero, PDO::PARAM_STR);
         $consulta->bindParam(':isActive', $isActive, PDO::PARAM_INT);
+        $consulta->bindParam('numero', $numero, PDO::PARAM_STR);
     
         if ($consulta->execute()) {
             // La inserción fue exitosa
@@ -109,21 +123,29 @@ class Usuario {
     }
     
 
-    function ActualizarUsuario($connection) {
+    public function ActualizarUsuario($pdo) {
         // Escapar y sanitizar los valores de entrada (para evitar inyección de SQL)
-        $userID = mysqli_real_escape_string($connection, $this->ID_usuario);
-        $nuevoNombre = mysqli_real_escape_string($connection, $this->nombre);
-        $nuevoApellido = mysqli_real_escape_string($connection, $this->apellido);
-        $nuevoCorreoElectronico = mysqli_real_escape_string($connection, $this->email);
-        $nuevoUsername = mysqli_real_escape_string($connection, $this->username);
-        $nuevaContrasena = mysqli_real_escape_string($connection, $this->password);
-        $nuevoGenero = mysqli_real_escape_string($connection, $this->genero);
+        $userID = $this->ID_usuario;
+        $nuevoNombre = $this->nombre;
+        $nuevoApellido = $this->apellido;
+        $nuevoCorreoElectronico = $this->email;
+        $nuevoUsername = $this->username;
+        $nuevaContrasena = $this->password;
+        $nuevoGenero = $this->genero;
+        $numero = $this->numero;
     
         // Llamar al procedimiento almacenado "ActualizarUsuario"
-        $query = "CALL ActualizarUsuario(?, ?, ?, ?, ?, ?, ?)";
+        $query = "CALL ActualizarUsuario(?, ?, ?, ?, ?, ?, ?, ?)";
         
-        $stmt = $connection->prepare($query);
-        $stmt->bind_param("issssss", $userID, $nuevoNombre, $nuevoApellido, $nuevoCorreoElectronico, $nuevoUsername, $nuevaContrasena, $nuevoGenero);
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $userID, PDO::PARAM_INT);
+        $stmt->bindParam(2, $nuevoNombre, PDO::PARAM_STR);
+        $stmt->bindParam(3, $nuevoApellido, PDO::PARAM_STR);
+        $stmt->bindParam(4, $nuevoCorreoElectronico, PDO::PARAM_STR);
+        $stmt->bindParam(5, $nuevoUsername, PDO::PARAM_STR);
+        $stmt->bindParam(6, $nuevaContrasena, PDO::PARAM_STR);
+        $stmt->bindParam(7, $nuevoGenero, PDO::PARAM_STR);
+        $stmt->bindParam(8, $numero, PDO::PARAM_STR);
     
         if ($stmt->execute()) {
             // La actualización fue exitosa
@@ -133,6 +155,7 @@ class Usuario {
             return false;
         }
     }
+    
     
 
     public function inactivarUsuario($connection){
