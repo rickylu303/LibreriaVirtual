@@ -11,7 +11,7 @@
     <title>Virtual Library</title>
     <link rel="stylesheet" href="../sfx/header.css">
     <link rel="stylesheet" href="../sfx/footer.css">
-    <link rel="stylesheet" href="../sfx/login.css">
+    <link rel="stylesheet" href="../sfx/register.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
@@ -34,28 +34,44 @@
     <div class="loginContainer">
         <div class="login">
             <div class="loginContent">
-                <img src="../sfx/images/login1.svg" alt="">
+                <img src="../sfx/images/register3.svg" alt="">
             </div>
             <div class="loginForm">
-                <h1>Login</h1>
+                <h1>Register</h1>
                 <form action="">
                     <div class="tbox">
-                        <i class="fa-regular fa-user"></i><input type="text" name="Email" placeholder="Email*" required>
+                        <i class="fa-regular fa-user"></i><input type="text" name="FName" placeholder="Name*" required>
                     </div>
+
+                    <div class="tbox">
+                        <i class="fa-regular fa-envelope"></i><input type="email" name="Email" placeholder="Email*" required>
+                    </div>
+
+                    <div class="tbox">
+                        <i class="fa-solid fa-phone"></i><input type="tel" name="Phone" placeholder="Phone*" required>
+                    </div>
+
                     <div class="tbox">
                         <i class="fa-solid fa-lock"></i><input type="password" name="Pass" placeholder="Password*" required>
                     </div>
-                    <div class="pass"><a href="">Forgot Password?</a></div>
+
+                    <div class="tbox">
+                        <i class="fa-solid fa-lock"></i><input type="password" name="Pass" placeholder="Confirm Password*" required>
+                    </div>
+
                     <button class="btn">Login</button>
-                    <div class="signup-link">Not a member? <a href="./register.php">Signup Now</a></div>
+
+                    <div class="signup-link">You are already a member? <a href="./login.php">Login Now</a></div>
                 </form>
                 <ul class="social">
                     <li>
                         <i class="fa-brands fa-square-facebook"></i>
                     </li>
+
                     <li>
                         <i class="fa-brands fa-square-instagram"></i>
                     </li>
+                    
                     <li>
                         <i class="fa-brands fa-square-x-twitter"></i>
                     </li>
