@@ -17,3 +17,80 @@
 body{
     background: var(--gray);
 }
+
+.title-carousel{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2em;
+}
+
+.Section-Carousel{
+    min-height: 70vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container-slider{
+    position: block;
+    width: 46em;
+    margin: 20px;
+    border: 1px solid var(--black);
+}
+
+.slider{
+    position: relative;
+    width: 100%;
+    height: 370px;
+    overflow: hidden;
+    top: 25px;
+}
+
+.item{
+    position: absolute;
+    width: 200px;
+    height: 320px;
+    text-align: justify;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.5s;
+    left: calc(50% - 110px);
+    top: 0;
+}
+
+.item img{
+    position: absolute;
+    width: 200px;
+    height: 320px;
+    border-radius: 10px;
+    transition: 0.5s;
+    left: calc(50% - 100px);
+    top: 0;
+}
+
+#next, #prev{
+    position: absolute;
+    top: 40%;
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    font-size: xxx-large;
+    font-weight: bold;
+    left: 20px;
+    cursor: pointer;
+}
+
+#next:hover{
+    color: var(--orange);
+}
+
+#prev:hover{
+    color: var(--orange);
+}
+
+#next{
+    left: 680px;
+}

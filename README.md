@@ -70,5 +70,22 @@
             <p>Copyright &copy;2023; Designed by <span class="designer"> Starlight Team</p>
         </div>
     </footer>
+
+#next, #prev{
+    position: absolute;
+    top: 40%;
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    font-size: xxx-large;
+    font-weight: bold;
+    left: 50px;
+}
+
+#next{
+    left: unset;
+    right: 50px;
+}
+
 </body>
 </html>
