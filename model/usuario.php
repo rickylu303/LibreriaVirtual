@@ -91,17 +91,17 @@ class Usuario {
 
     public function crearNuevoUsuario($connection) {
         // Escapar y sanitizar los valores de entrada (para evitar inyección de SQL)
-        $nombre = $this->nombre;
-        $apellido = $this->apellido;
-        $correoElectronico = $this->email;
-        $username = $this->username;
+        $nombre = strip_tags($this->nombre);
+        $apellido = strip_tags($this->apellido);
+        $correoElectronico = strip_tags($this->email);
+        $username = strip_tags($this->username);
         $contrasena = $this->password;
-        $genero = $this->genero;
+        $genero = strip_tags($this->genero);
         $isActive = $this->isActive;
-        $numero = $this->numero;
+        $numero = strip_tags($this->numero);
     
         // Llamar al procedimiento almacenado "CrearNuevoUsuario"
-        $query = "CALL CrearNuevoUsuario(:nombre, :apellido, :correoElectronico, :username, :contrasena, :genero, :isActive, :numero)";
+        $query = "CALL CrearNuevoUsuario(:nombre, :apellido, :correoElectronico, :username, :contrasena, :genero, :numero, :isActive)";
         
         $consulta = $connection->prepare($query);
         $consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
@@ -110,15 +110,14 @@ class Usuario {
         $consulta->bindParam(':username', $username, PDO::PARAM_STR);
         $consulta->bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
         $consulta->bindParam(':genero', $genero, PDO::PARAM_STR);
-        $consulta->bindParam(':isActive', $isActive, PDO::PARAM_INT);
         $consulta->bindParam('numero', $numero, PDO::PARAM_STR);
+        $consulta->bindParam(':isActive', $isActive, PDO::PARAM_INT);
     
         if ($consulta->execute()) {
-            // La inserción fue exitosa
-            return true;
+            $resultado = $consulta->fetchColumn();
+            return $resultado;
         } else {
-            // Error al ejecutar el procedimiento almacenado
-            return false;
+            return 'ERROR';
         }
     }
     

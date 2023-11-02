@@ -11,16 +11,8 @@ class Libro {
     private $image_url;
     private $pdf_url;
 
-    public function __construct($ID_libro, $titulo, $precio, $descripcion, $sinopsis, $fechaPublicacion, $editorial, $image_url, $pdf_url) {
-        $this->ID_libro = $ID_libro;
-        $this->titulo = $titulo;
-        $this->precio = $precio;
-        $this->descripcion = $descripcion;
-        $this->sinopsis = $sinopsis;
-        $this->fechaPublicacion = $fechaPublicacion;
-        $this->editorial = $editorial; // Asigna una instancia de Editorial
-        $this->image_url = $image_url;
-        $this->pdf_url = $pdf_url;
+    public function __construct() {
+
     }
 
     public function getIDLibro() {
@@ -94,6 +86,38 @@ class Libro {
     public function setPdfUrl($pdf_url) {
         $this->pdf_url = $pdf_url;
     }
+
+    public function crearNuevoLibro($pdo) {
+        // Escapar y sanitizar los valores de entrada (si es necesario)
+        $titulo = $this->titulo;
+        $precio = $this->precio;
+        $descripcion = $this->descripcion;
+        $sinopsis = $this->sinopsis;
+        $fechaPublicacion = $this->fechaPublicacion;
+        $idEditorial = $this->editorial->getID_editorial();
+        $imageURL = $this->image_url;
+        $pdfURL = $this->pdf_url;
+
+        // Llamar al procedimiento almacenado "CrearNuevoLibro"
+        $query = "CALL CrearNuevoLibro(:titulo, :precio, :descripcion, :sinopsis, :fechaPublicacion, :idEditorial, :imageURL, :pdfURL)";
+        
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+        $stmt->bindParam(':precio', $precio, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->bindParam(':sinopsis', $sinopsis, PDO::PARAM_STR);
+        $stmt->bindParam(':fechaPublicacion', $fechaPublicacion, PDO::PARAM_STR);
+        $stmt->bindParam(':idEditorial', $idEditorial, PDO::PARAM_INT);
+        $stmt->bindParam(':imageURL', $imageURL, PDO::PARAM_STR);
+        $stmt->bindParam(':pdfURL', $pdfURL, PDO::PARAM_STR);
+    
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }
 
 

@@ -6,9 +6,9 @@ CREATE TABLE usuario (
     ID_usuario INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(25),
     Apellido VARCHAR(25),
-    Correo_electrónico VARCHAR(50),
-    username VARCHAR(20) UNIQUE,
-    Contraseña VARCHAR(20),
+    Correo_electronico VARCHAR(50),
+    username VARCHAR(20),
+    password VARCHAR(20),
     Genero VARCHAR(10),
     IsActive TINYINT(1),
     numero_telefonico VARCHAR(20)
@@ -138,21 +138,22 @@ CREATE PROCEDURE CrearNuevoUsuario(
     IN p_Username VARCHAR(20),
     IN p_Contraseña VARCHAR(50),
     IN p_Genero VARCHAR(10),
-    IN p_numero VARCHAR(20)
+    IN p_numero VARCHAR(20),
+    IN p_isactive TINYINT(1)
 )
 BEGIN
     -- Verificar si el correo ya existe
     DECLARE username_exists INT;
-    SELECT COUNT(*) INTO username_exists FROM usuario WHERE Correo_electronico = p_numero;
+    SELECT COUNT(*) INTO username_exists FROM usuario WHERE Correo_electronico = p_Correo_electronico;
     
     IF username_exists = 0 THEN
         -- Insertar el nuevo usuario si el nombre de usuario no existe
-        INSERT INTO usuario (Nombre, Apellido, Correo_electrónico, username, Contraseña, Genero)
-        VALUES (p_Nombre, p_Apellido, p_Correo_electronico, p_Username, p_Contraseña, p_Genero);
+        INSERT INTO usuario (Nombre, Apellido, Correo_electronico, username, password, Genero, IsActive, numero_telefonico)
+        VALUES (p_Nombre, p_Apellido, p_Correo_electronico, p_Username, p_Contraseña, p_Genero, p_isactive, p_numero);
         
-        SELECT 'Usuario creado con éxito.' AS Resultado;
+        SELECT 'USER_CREATED' AS Resultado;
     ELSE
-        SELECT 'El correo ya está en uso. Por favor, elige otro correo para tu usuario.' AS Resultado;
+        SELECT 'ERROR_EMAIL_ALREADY_USED' AS Resultado;
     END IF;
 END //
 
@@ -254,7 +255,9 @@ CREATE PROCEDURE CrearNuevoLibro(
     IN p_Descripción TEXT,
     IN p_Sinopsis TEXT,
     IN p_Fecha_de_publicación DATE,
-    IN p_ID_editorial INT
+    IN p_ID_editorial INT,
+    IN p_image_url VARCHAR(255), -- Nuevo campo image_url
+    IN p_pdf_url VARCHAR(255)    -- Nuevo campo pdf_url
 )
 BEGIN
     DECLARE editorial_exists INT;
@@ -263,8 +266,8 @@ BEGIN
 
     IF editorial_exists = 1 THEN
         -- Insertar el nuevo libro si la editorial existe
-        INSERT INTO libro (Título, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial)
-        VALUES (p_Título, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial);
+        INSERT INTO libro (Título, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial, image_url, pdf_url)
+        VALUES (p_Título, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial, p_image_url, p_pdf_url);
         
         SELECT 'Libro creado con éxito.' AS Resultado;
     ELSE
@@ -273,6 +276,7 @@ BEGIN
 END //
 
 DELIMITER ;
+
 
 
 DELIMITER //

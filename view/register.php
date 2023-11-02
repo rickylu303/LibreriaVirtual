@@ -38,28 +38,34 @@
             </div>
             <div class="loginForm">
                 <h1>Register</h1>
-                <form action="">
+                <form id="registerForm" action="">
                     <div class="tbox">
-                        <i class="fa-regular fa-user"></i><input type="text" name="FName" placeholder="Name*" required>
+                        <i class="fa-regular fa-user"></i><input id="fname" type="text" name="fname" placeholder="Name*" required>
                     </div>
 
                     <div class="tbox">
-                        <i class="fa-regular fa-envelope"></i><input type="email" name="Email" placeholder="Email*" required>
+                        <i class="fa-regular fa-user"></i><input id="lastname" type="text" name="lastname" placeholder="Last Name*" required>
                     </div>
 
                     <div class="tbox">
-                        <i class="fa-solid fa-phone"></i><input type="tel" name="Phone" placeholder="Phone*" required>
+                        <i class="fa-regular fa-envelope"></i><input id="email" type="email" name="email" placeholder="Email*" required>
                     </div>
 
                     <div class="tbox">
-                        <i class="fa-solid fa-lock"></i><input type="password" name="Pass" placeholder="Password*" required>
+                        <i class="fa-solid fa-phone"></i><input id="phone" type="tel" name="phone" placeholder="Phone*" required>
                     </div>
 
                     <div class="tbox">
-                        <i class="fa-solid fa-lock"></i><input type="password" name="Pass" placeholder="Confirm Password*" required>
+                        <i class="fa-solid fa-lock"></i><input id="password" type="password" name="password" placeholder="Password*" required>
                     </div>
 
-                    <button class="btn">Login</button>
+                    <div class="tbox">
+                        <i class="fa-solid fa-lock"></i><input id="confirmPass" type="password" name="confirmPass" placeholder="Confirm Password*" required>
+                    </div>
+
+                    <button id="registerbtn" class="btn">Login</button>
+
+                    <div id="erroMessage" class="errorRegister"></div>
 
                     <div class="signup-link">You are already a member? <a href="./login.php">Login Now</a></div>
                 </form>
@@ -84,5 +90,7 @@
         include '../includes/footer_view.php';
         footer_view();
     ?>
+
+    <script src="../js/registerController.js"></script>
 </body>
 </html>

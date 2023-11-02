@@ -140,6 +140,13 @@
     text-decoration: underline;
 }
 
+.errorRegister{
+    text-align: center;
+    margin-top: 5px;
+    color: #c60d11;
+    display: none;
+}
+
 .social{
     margin-top: 25px;
     list-style: none;
