@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>Virtual Library</title>
-    <link rel="stylesheet" href="../sfx/dashboard.css">
+    <link rel="stylesheet" href="../sfx/dashcustomers.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
@@ -23,11 +23,11 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="./dashboard.php" class="active"><span class="fa-solid fa-igloo"></span>
+                    <a href="./dashboard.php"><span class="fa-solid fa-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="./dashcustomers.php"><span class="fa-solid fa-users"></span>
+                    <a href="./dashcustomers.php" class="active"><span class="fa-solid fa-users"></span>
                     <span>Customers</span></a>
                 </li>
                 <li>

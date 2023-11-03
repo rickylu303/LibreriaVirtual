@@ -63,7 +63,7 @@
                         <i class="fa-solid fa-lock"></i><input id="confirmPass" type="password" name="confirmPass" placeholder="Confirm Password*" required>
                     </div>
 
-                    <button id="registerbtn" class="btn">Login</button>
+                    <button id="registerbtn" class="btn">Register</button>
 
                     <div id="erroMessage" class="errorRegister"></div>
 

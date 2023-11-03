@@ -75,7 +75,6 @@ body{
 .sidebar-menu a span:first-child{
     font-size: 1.5rem;
     padding-right: 10px;
-    text-align: left;
 }
 
 #nav-toggle:checked + .sidebar{
@@ -250,7 +249,7 @@ main{
     border-bottom: 1px solid #f0f0f0;
 }
 
-.card-header button{
+.card-header .button{
     background: var(--orange);
     border-radius: 10px;
     color: var(--white);
@@ -260,7 +259,7 @@ main{
     cursor: pointer;
 }
 
-.card-header button:hover{
+.card-header .button:hover{
     background: #ED621C;
 }
 
@@ -297,6 +296,12 @@ tr td:last-child{
     align-items: center;
 }
 
+.edit{
+    display: inline-block;
+    color: var(--orange);
+    padding: 5px 15px
+}
+
 .status.purple{
     background: rebeccapurple;
 }
@@ -318,7 +323,7 @@ tr td:last-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .59rem .7rem;
+    padding: 1.78rem .7rem;
     color: var(--white);
 }
 
@@ -331,6 +336,12 @@ tr td:last-child{
     border-radius: 50%;
     margin-right: 1rem;
     background: var(--white);
+}
+
+.info .img-1{
+    border-radius: 50%;
+    margin-right: 1rem;
+    background: var(--orange);
 }
 
 .info h4{
@@ -349,6 +360,24 @@ tr td:last-child{
     display: inline-block;
     margin-left: .5rem;
     color: var(--orange);
+}
+
+.fa-solid.fa-circle-user{
+    cursor: pointer;
+}
+
+.fa-solid.fa-comment{
+    cursor: pointer;
+}
+
+.fa-solid.fa-phone{
+    cursor: pointer;
+}
+
+@media(max-width: 350px){
+    .box{
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 1200px){
