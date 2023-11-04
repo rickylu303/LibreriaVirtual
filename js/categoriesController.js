@@ -66,7 +66,7 @@ function escribirLibros(books){
             let tittle = book.Titulo.length > 15 ? book.Titulo.substring(0, 15) + "..." : book.Titulo;
             let calificationCount = Math.round(book.PromedioPuntuacion);
             var bookCard = $('<div>').addClass('bookCard').attr('bookId', book.ID_libro);
-            var img = $('<img>').attr('src', '../sfx/images/' + book.image_url).attr('alt', 'Book image');
+            var img = $('<img>').attr('src', '../resources/images/' + book.image_url).attr('alt', 'Book image');
             var bookCardDetail = $('<div>').addClass('bookCardDetail');
             var h3 = $('<h3>').addClass('cardBookTitle').text(tittle);
             var pAutor = $('<p>').addClass('cardBookAutor').text('By ' + book.NombreAutor);

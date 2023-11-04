@@ -44,6 +44,10 @@ class AutorController{
             echo 'Hubo algun error al guardar el usuario';
         }
     }
+
+    public function listAllAutors(){
+        return (new Autor())->listAllAutors($this->connection);
+    }
 }
 
 ?>

@@ -273,8 +273,8 @@ BEGIN
     IF editorial_exists = 1 THEN
         IF autor_exist = 1 THEN
             -- Insertar el nuevo libro si la editorial existe
-            INSERT INTO libro (Titulo, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial, image_url, pdf_url)
-            VALUES (p_Titulo, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial, p_image_url, p_pdf_url);
+            INSERT INTO libro (Titulo, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial, image_url, pdf_url, ID_autor)
+            VALUES (p_Titulo, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial, p_image_url, p_pdf_url, p_Id_Autor);
             
             SELECT 'CREATION_SUCCESS' AS Resultado;
         ELSE 
@@ -630,3 +630,4 @@ LEFT JOIN generos_libros gll ON l.ID_libro = gll.ID_libro
 LEFT JOIN usuario_valoraciones uv ON l.ID_libro = uv.ID_libro
 LEFT JOIN generos_literarios gl ON gl.ID_genero = gll.ID_genero
 GROUP BY l.ID_libro;
+

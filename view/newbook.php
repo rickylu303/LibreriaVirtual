@@ -1,5 +1,14 @@
 <?php
+    include "../controller/connection.php";
+    include "../controller/autorController.php";
+    include "../controller/editorialController.php";
 
+    $connection = (new Connection())->getConnection();
+
+    $autorController = new autorController($connection);
+    $editorialController = new editorialController($connection);
+    $listAutores = $autorController->listAllAutors();
+    $listEditorial = $editorialController->listAllEditoriales();
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +92,7 @@
             <p>Have any new book? Add the new book here!
                 Submit the form!
             </p>
-            <form action="">
+            <form id="registrarLibro" action="">
                 <div class="row">
                     <div class="column">
                         <label class="label1" for="title">Title</label>
@@ -93,15 +102,15 @@
                         <label class="label1" for="author">Author</label>
                         <div class="dropdown">
                             <div class="select">
-                                <span class="selected">Author</span>
+                                <span id="autorValue" idValue="" class="selected">Author</span>
                                 <div class="caret"></div>
                             </div>
                             <ul class="menu">
-                                <li>Author 1</li>
-                                <li>Author 2</li>
-                                <li>Author 3</li>
-                                <li class="active">Author 4</li>
-                                <li>Author 5</li>
+                                <?php
+                                    foreach ($listAutores as $key => $autor) {
+                                        echo '<li idValue="' . $autor['ID_autor'] . '">' . $autor['Nombre'] . ' ' . $autor['Apellido']  . '</li>';
+                                    }
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -110,8 +119,21 @@
                 <div class="row">
                     <div class="column">
                         <label class="label1" for="editorial">Editorial</label>
-                        <input class="input1" type="text" id="editorial" placeholder="Editorial">
+                        <div class="dropdown">
+                            <div class="select">
+                                <span id="editorialValue" idValue="" class="selected">Editorial</span>
+                                <div class="caret"></div>
+                            </div>
+                            <ul class="menu">
+                                <?php
+                                    foreach ($listEditorial as $key => $editorial) {
+                                        echo '<li idValue="' . $editorial['ID_editorial'] . '">' . $editorial['Nombre'] . '</li>';
+                                    }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
+
                     <div class="column">
                         <label class="label1" for="price">Price</label>
                         <input class="input1" type="type" id="price" placeholder="Price">
@@ -120,15 +142,15 @@
 
                 <div class="row">
                     <div class="column">
-                        <label class="label1" for="issue">Synopsis</label>
-                        <textarea id="issue" placeholder="Describe your synopsis here" rows="3"></textarea>
+                        <label class="label1" for="sinopsis">Synopsis</label>
+                        <textarea id="sinopsis" placeholder="Describe your synopsis here" rows="3"></textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="column">
-                        <label class="label1" for="issue">Description</label>
-                        <textarea id="issue" placeholder="Describe your description here" rows="3"></textarea>
+                        <label class="label1" for="descripcion">Description</label>
+                        <textarea id="descripcion" placeholder="Describe your description here" rows="3"></textarea>
                     </div>
                 </div>
 
@@ -157,10 +179,13 @@
                         <ul class="ul-upload" id="files-list1"></ul>
                     </div>
                 </div>
-                <a href="" class="button1">Submit</a>
+
+                <a id="saveBookButton" href="" class="button1">Submit</a>
             </form>
         </div>
     </div>
     <script src="../js/dropdown.js"></script>
+    <script src="../js/uploadFile.js"></script>
+    <script src="../js/dashbooksController.js"></script>
 </body>
 </html>

@@ -71,6 +71,22 @@ class Editorial {
             return false;
         }
     }
+
+    public function listAllEditoriales($pdo) {
+        $query = "SELECT * FROM editorial";
+
+        try{
+            $stmt = $pdo->query($query);
+    
+            if ($stmt) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return null;
+            }
+        }catch(PDOException $e){
+            return null;
+        }
+    }
 }
 
 

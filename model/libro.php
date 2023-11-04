@@ -7,7 +7,7 @@ class Libro {
     private $descripcion;
     private $sinopsis;
     private $fechaPublicacion;
-    private $editorial; // Propiedad para la relación con la tabla "editorial"
+    private $editorial; 
     private $image_url;
     private $pdf_url;
     private $autor;
@@ -103,10 +103,10 @@ class Libro {
         $descripcion = $this->descripcion;
         $sinopsis = $this->sinopsis;
         $fechaPublicacion = $this->fechaPublicacion;
-        $idEditorial = $this->editorial->getID_editorial();
+        $idEditorial = $this->editorial;
         $imageURL = $this->image_url;
         $pdfURL = $this->pdf_url;
-        $autor = $this->autor->getID_autor();
+        $autor = $this->autor;
 
         // Llamar al procedimiento almacenado "CrearNuevoLibro"
         $query = "CALL CrearNuevoLibro(:titulo, :precio, :descripcion, :sinopsis, :fechaPublicacion, :idEditorial, :imageURL, :pdfURL, :idAutor)";

@@ -127,6 +127,22 @@ class Autor {
             return false;
         }
     }
+
+    public function listAllAutors($pdo) {
+        $query = "SELECT * FROM autor";
+
+        try{
+            $stmt = $pdo->query($query);
+    
+            if ($stmt) {
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return null;
+            }
+        }catch(PDOException $e){
+            return null;
+        }
+    }
 }
 
 

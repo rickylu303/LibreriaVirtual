@@ -35,6 +35,10 @@ class EditorialController{
             echo 'Hubo algun error al guardar el usuario';
         }
     }
+
+    public function listAllEditoriales(){
+        return (new Editorial()) -> listAllEditoriales($this->connection);
+    }
 }
 
 ?>
