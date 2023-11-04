@@ -259,7 +259,7 @@
                                     <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>Lewis Caroll</h4>
-                                        <small>CEO Excerpt</small>
+                                        <small>England</small>
                                     </div>
                                 </div>
                                 <div>
@@ -274,7 +274,7 @@
                                     <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>Suzanne Collins</h4>
-                                        <small>CEO Excerpt</small>
+                                        <small>United States</small>
                                     </div>
                                 </div>
                                 <div>
@@ -289,7 +289,7 @@
                                     <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>Brandon Sanderson</h4>
-                                        <small>CEO Excerpt</small>
+                                        <small>United States</small>
                                     </div>
                                 </div>
                                 <div>
@@ -304,7 +304,7 @@
                                     <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>J.R.R. Tolkien</h4>
-                                        <small>CEO Excerpt</small>
+                                        <small>England</small>
                                     </div>
                                 </div>
                                 <div>
@@ -319,7 +319,7 @@
                                     <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>David Lagercrantz</h4>
-                                        <small>CEO Excerpt</small>
+                                        <small>Sweden</small>
                                     </div>
                                 </div>
                                 <div>
@@ -473,7 +473,7 @@
                                     <img class="img-1" src="../sfx/images/editorial.svg" width="40px" height="40px" alt="">
                                     <div class="contact">
                                         <h4>Susaeta</h4>
-                                        <small>España</small>
+                                        <small>Spain</small>
                                     </div>
                                 </div>
                                 <div>

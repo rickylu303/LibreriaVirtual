@@ -78,7 +78,7 @@
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>54</h1>
+                        <h1>65</h1>
                         <span>Customers</span>
                     </div>
                     <div>
@@ -88,31 +88,31 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>79</h1>
-                        <span>Books</span>
+                        <h1>15</h1>
+                        <span>New Customers</span>
                     </div>
                     <div>
-                        <span class="fa-solid fa-clipboard-list"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>124</h1>
-                        <span>Orders</span>
-                    </div>
-                    <div>
-                        <span class="fa-solid fa-bag-shopping"></span>
+                        <span class="fa-solid fa-user-group"></span>
                     </div>
                 </div>
 
                 <div class="card-single">
                     <div>
-                        <h1>$6k</h1>
-                        <span>Income</span>
+                        <h1>20</h1>
+                        <span>Usual Customers</span>
                     </div>
                     <div>
-                        <span class="fa-brands fa-google-wallet"></span>
+                        <span class="fa-solid fa-users-line"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1>30</h1>
+                        <span>Casual Customers</span>
+                    </div>
+                    <div>
+                        <span class="fa-solid fa-users-viewfinder"></span>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Recent Orders</h3>
+                            <h3>Recent Customers</h3>
 
                             <button>See all <span class="fa-solid fa-right-long"></span> </button>
                         </div>
@@ -131,83 +131,147 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Book Title</td>
-                                            <td>Editorial</td>
+                                            <td>First Name</td>
+                                            <td>Last Name</td>
+                                            <td>Email</td>
                                             <td>Status</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Alice in Wonderland</td>
-                                            <td>Susaeta</td>
                                             <td>
-                                                <span class="status purple"></span>
-                                                review
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Gabriel
+                                            </td>
+                                            <td class="lastname">Flores</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                gabrielfl123@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status green"></span>
+                                                Active
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Hunger Games</td>
-                                            <td>Scholastic Press</td>
                                             <td>
-                                                <span class="status pink"></span>
-                                                in progress
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Tyrone
+                                            </td>
+                                            <td class="lastname">Reyes</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                tyrone321@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Hunger Games 2</td>
-                                            <td>Scholastic Press</td>
                                             <td>
-                                                <span class="status orange"></span>
-                                                pending
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Scarleth
+                                            </td>
+                                            <td class="lastname">Urbina</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                scarlethurb1@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td>Hunger Games 3</td>
-                                            <td>Scholastic Press</td>
                                             <td>
-                                                <span class="status purple"></span>
-                                                review
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Fabiola
+                                            </td>
+                                            <td class="lastname">Perez</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                fabiperez12@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Mistborn The Final Empire</td>
-                                            <td>House Grupo Editorial</td>
                                             <td>
-                                                <span class="status pink"></span>
-                                                in progress
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Leonardo
+                                            </td>
+                                            <td class="lastname">Barahona</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                leonel123@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Mistborn The Well Ascension</td>
-                                            <td>House Grupo Editorial</td>
                                             <td>
-                                                <span class="status orange"></span>
-                                                pending
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Laura
+                                            </td>
+                                            <td class="lastname">Gradiz</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                laug23@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Mistborn The Hero of Ages</td>
-                                            <td>House Grupo Editorial</td>
                                             <td>
-                                                <span class="status purple"></span>
-                                                review
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Kevin
+                                            </td>
+                                            <td class="lastname">Guerrero</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                keving123@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>LOTR Fellowship of the Ring</td>
-                                            <td>Del Rey Books</td>
                                             <td>
-                                                <span class="status pink"></span>
-                                                in progress
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Grecia
+                                            </td>
+                                            <td class="lastname">Guzman</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                greciaguz123@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>LOTR The Rings of Power</td>
-                                            <td>Del Rey Books</td>
                                             <td>
-                                                <span class="status orange"></span>
-                                                pending
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Fenner
+                                            </td>
+                                            <td class="lastname">Mena</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                fennermena123@gmail.com
+                                            </td>
+                                            <td>
+                                                <span class="status red"></span>
+                                                Inactive
                                             </td>
                                         </tr>
                                     </tbody>
@@ -318,8 +382,271 @@
                         </div>    
                     </div>
                 </div>
-            </div>
 
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Customers</h3>
+
+                            <button>See all <span class="fa-solid fa-right-long"></span> </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td>First Name</td>
+                                            <td>Last Name</td>
+                                            <td>Email</td>
+                                            <td>Update</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Fabiola
+                                            </td>
+                                            <td class="lastname">Perez</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                fabiperez12@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Fenner
+                                            </td>
+                                            <td class="lastname">Mena</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                fennermena123@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Gabriel
+                                            </td>
+                                            <td class="lastname">Flores</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                gabrielfl123@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Grecia
+                                            </td>
+                                            <td class="lastname">Guzman</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                greciaguz123@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Kevin
+                                            </td>
+                                            <td class="lastname">Guerrero</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                keving123@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Laura
+                                            </td>
+                                            <td class="lastname">Gradiz</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                laug23@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Leonardo
+                                            </td>
+                                            <td class="lastname">Barahona</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                leonel123@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userf.svg" width="30px" height="30px" alt="">
+                                                Scarleth
+                                            </td>
+                                            <td class="lastname">Urbina</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                scarlethurb1@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src="../sfx/images/userm.svg" width="30px" height="30px" alt="">
+                                                Tyrone
+                                            </td>
+                                            <td class="lastname">Reyes</td>
+                                            <td>
+                                                <img src="../sfx/images/email.svg" width="30px" height="20px" alt="">
+                                                tyrone321@gmail.com
+                                            </td>
+                                            <td>
+                                                <a href="" class="edit">Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customers">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Usual Customers</h3>
+
+                            <button>See all <span class="fa-solid fa-right-long"></span> </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Tyrone Reyes</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Laura Gradiz</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Fabiola Perez</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Gabriel Flores</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Scarleth Urbina</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Leonardo Barahona</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
         </main>
     </div>
 

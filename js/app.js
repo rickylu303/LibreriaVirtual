@@ -1,37 +1,47 @@
-let items = document.querySelectorAll('.slider .item');
-let next = document.getElementById('next');
-let prev = document.getElementById('prev');
+var swiper = new Swiper(".books-slider", {
+    loop:true,
+    centeredSlides: true,
+    autoplay: {
+        delay: 9500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        0: {
+        slidesPerView: 1,
+        },
+        768: {
+        slidesPerView: 2,
+        },
+        1024: {
+        slidesPerView: 3,
+        },
+    },
+});
 
-let active = 3;
-function loadshow(){
-    let stt = 0;
-    items[active].style.transform = `none`;
-    items[active].style.zIndex = 1;
-    items[active].style.filter = 'none';
-    items[active].style.opacity = 1;
-    for(var i = active + 1; i < items.length; i++){
-        stt++;
-        items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
-        items[i].style.zIndex = -stt;
-        items[i].style.filter = 'blur(5px)';
-        items[i].style.opacity = stt > 2 ? 0 : 0.6;
-    }
-    stt = 0;
-    for(var i = active - 1; i >= 0; i--){
-        stt++;
-        items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(1deg)`;
-        items[i].style.zIndex = -stt;
-        items[i].style.filter = 'blur(5px)';
-        items[i].style.opacity = stt > 2 ? 0 : 0.6;
-    }
-}
-loadshow();
-next.onclick = function(){
-    active = active + 1 < items.length ? active + 1 : active;
-    loadshow();
-}
-
-prev.onclick = function(){
-    active = active - 1 >= 0 ? active - 1 : active;
-    loadshow();
-}
+var swiper = new Swiper(".featured-slider", {
+    spaceBetween: 10,
+    loop:true,
+    centeredSlides: true,
+    autoplay: {
+        delay: 9500,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        450: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        1024: {
+            slidesPerView: 4,
+        },
+    },
+});

@@ -318,8 +318,209 @@
                         </div>    
                     </div>
                 </div>
-            </div>
 
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Orders</h3>
+
+                            <button>See all <span class="fa-solid fa-right-long"></span> </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <td>Book Title</td>
+                                            <td>Editorial</td>
+                                            <td>Status</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Alice in Wonderland</td>
+                                            <td>Susaeta</td>
+                                            <td>
+                                                <span class="status purple"></span>
+                                                review
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hunger Games</td>
+                                            <td>Scholastic Press</td>
+                                            <td>
+                                                <span class="status pink"></span>
+                                                in progress
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hunger Games 2</td>
+                                            <td>Scholastic Press</td>
+                                            <td>
+                                                <span class="status orange"></span>
+                                                pending
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Hunger Games 3</td>
+                                            <td>Scholastic Press</td>
+                                            <td>
+                                                <span class="status purple"></span>
+                                                review
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mistborn The Final Empire</td>
+                                            <td>House Grupo Editorial</td>
+                                            <td>
+                                                <span class="status pink"></span>
+                                                in progress
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mistborn The Well Ascension</td>
+                                            <td>House Grupo Editorial</td>
+                                            <td>
+                                                <span class="status orange"></span>
+                                                pending
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mistborn The Hero of Ages</td>
+                                            <td>House Grupo Editorial</td>
+                                            <td>
+                                                <span class="status purple"></span>
+                                                review
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LOTR Fellowship of the Ring</td>
+                                            <td>Del Rey Books</td>
+                                            <td>
+                                                <span class="status pink"></span>
+                                                in progress
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LOTR The Rings of Power</td>
+                                            <td>Del Rey Books</td>
+                                            <td>
+                                                <span class="status orange"></span>
+                                                pending
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customers">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>New customer</h3>
+
+                            <button>See all <span class="fa-solid fa-right-long"></span> </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Gabriel Flores</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Scarleth Urbina</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Tyrone Reyes</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Fabiola Perez</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userm.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Leonardo Barahona</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+
+                            <div class="customer">
+                                <div class="info">
+                                    <img src="../sfx/images/userf.svg" width="40px" height="40px" alt="">
+                                    <div class="contact">
+                                        <h4>Laura Gradiz</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fa-solid fa-circle-user"></span>
+                                    <span class="fa-solid fa-comment"></span>
+                                    <span class="fa-solid fa-phone"></span>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>
         </main>
     </div>
 

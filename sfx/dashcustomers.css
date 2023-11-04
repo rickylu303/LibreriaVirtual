@@ -297,16 +297,35 @@ tr td:last-child{
     align-items: center;
 }
 
-.status.purple{
-    background: rebeccapurple;
+.status.green{
+    background: darkolivegreen;
 }
 
-.status.pink{
-    background: deeppink;
+.status.red{
+    background: darkred;
 }
 
 .status.orange{
     background: orangered;
+}
+
+.lastname{
+    display: inline-block;
+    text-align: center;
+    padding-top: 22px;
+}
+
+.edit{
+    display: inline-block;
+    color: var(--orange);
+    padding: 5px 15px
+}
+
+td .email{
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    background-color: var(--white);
 }
 
 .table-responsive{
@@ -318,7 +337,7 @@ tr td:last-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .59rem .7rem;
+    padding: 1.30rem .7rem;
     color: var(--white);
 }
 
