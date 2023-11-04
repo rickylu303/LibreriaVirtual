@@ -125,7 +125,11 @@ function sendLoginPetition(email, password){
         var responseData = JSON.parse(response);
 
         if(responseData['success']){
-            window.location.href = "../index.php";
+            if(responseData['isAdminUser']){
+                window.location.href = "../view/dashboard.php";
+            }else{
+                window.location.href = "../index.php";
+            }
         }else if(responseData['error'] && responseData['error'] == 'INVALID_USER'){
             mostrarError('Email and password combination dont found');
         }else{

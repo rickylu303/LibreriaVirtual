@@ -6,6 +6,7 @@ session_start();
 $action = isset($_POST['action']) ? $_POST['action'] : null;
 
 $response = array();
+$adminEmail = "admin@libreriavirtual.com";
 
 if($action != null && $action != '') {
     if($action == 'createUser'){
@@ -52,6 +53,9 @@ if($action != null && $action != '') {
                 $_SESSION['userstatus'] = 'logged';
                 $_SESSION['useremail'] = $email;
                 $_SESSION['username'] = $userName;
+                if($email==$adminEmail){
+                    $response['isAdminUser'] = 'true';
+                }
             }else{
                 $response['error'] = 'INVALID_USER';
             }

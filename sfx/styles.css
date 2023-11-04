@@ -154,13 +154,13 @@ section{
 }
 
 .icons-container .icons h3{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--white);
     padding-bottom: .5rem;
 }
 
 .icons-container .icons p{
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: var(--lightgray);
 }
 
@@ -272,21 +272,27 @@ section{
     display: flex;
     justify-content: flex-start;
     width: 500px;
-    height: 330px;
+    height: 400px;
+    margin-top: -100px;
+    margin-bottom: 10px;
 }
 
 .newsletter form{
+    left: 300px;
     max-width: 30rem;
-    margin-left: auto;
-    margin-top: -300px;
+    margin-left: 700px;
+    margin-top: -350px;
     text-align: center;
+    padding-top: 80px;
+    padding-bottom: 10px;
 }
 
 .newsletter form h3{
-    font-size: 1rem;
+    font-size: 2rem;
     color: var(--white);
     padding-bottom: .7rem;
     font-weight: normal;
+    padding-bottom: 10px;
 }
 
 .newsletter form .box{
@@ -297,6 +303,124 @@ section{
     color: var(--black);
     border-radius: .5rem;
     text-transform: none;
+}
+
+.arrivals .arrivals-slider{
+    border: 1px solid var(--black);
+    background: var(--black);
+}
+
+.arrivals .arrivals-slider .box{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 4.1rem;
+    margin: 1rem 0;
+    border: 8px solid var(--orange);
+}
+
+
+.arrivals .arrivals-slider .box .image img{
+    height: 15rem;
+    padding: 10px;
+    background: var(--orange);
+}
+
+.arrivals .arrivals-slider .box .content h3{
+    font-size: 1.3rem;
+    color: var(--white);
+}
+
+.arrivals .arrivals-slider .box .content .price{
+    font-size: 1.2rem;
+    color: var(--white);
+    padding-bottom: .5rem;
+}
+
+.arrivals .arrivals-slider .box .content .price span{
+    font-size: 1rem;
+    color: var(--lightgray);
+    text-decoration: none;
+}
+
+.arrivals .arrivals-slider .box .content .stars i{
+    font-size: 1rem;
+    color: var(--orange);
+}
+
+.deal{
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.deal .content{
+    flex: 1;
+}
+
+.deal .image{
+    flex: 1;
+}
+
+.deal .image img{
+    width: 100%;
+}
+
+.deal .content h3{
+    color: var(--orange);
+    font-size: 2.5rem;
+    padding-bottom: .5rem;
+}
+
+.deal .content h1{
+    color: var(--white);
+    font-size: 4rem;
+}
+
+.deal .content p{
+    padding: 1rem 0;
+    color: var(--lightgray);
+    font-size: 1.4rem;
+    line-height: 2;
+}
+
+.reviews .reviews-slider .box{
+    border: 1px solid var(--black);
+    padding: 2rem;
+    text-align: center;
+    background: var(--black);
+}
+
+.reviews .reviews-slider .box:hover{
+    border: 1px solid var(--lightgray);
+}
+
+.reviews .reviews-slider .box img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--lightgray);
+}
+
+.reviews .reviews-slider .box h3{
+    color: var(--white);
+    font-size: 2.2rem;
+    padding: 2rem 0;
+}
+
+.reviews .reviews-slider .box p{
+    color: var(--lightgray);
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    line-height: 2;
+}
+
+.reviews .reviews-slider .box .stars i{
+    font-size: 1.7rem;
+    color: var(--orange);
 }
 
 @media (max-width:991px){
@@ -359,18 +483,18 @@ section{
 }
 
 .bookCardDetail{
-    background-color: var(--white);
+    background-color: var(--black);
     height: 90%;
     margin-top: 25px;
 }
 
 .cardBookTitle{
-    color: var(--black);
+    color: var(--orange);
     font-size: 25px;
 }
 
 .cardBookAutor{
-    color: var(--gray);
+    color: var(--lightgray);
     font-size: 17px;
 }
 
@@ -381,11 +505,11 @@ section{
 
 .bookCardPrice{
     margin-right: 15px;
-    color: green;
+    color: var(--orange);
 }
 
 .cardBookSinopsis{
-    color: var(--gray);
+    color: var(--lightgray);
     font-size: 13px;
     min-height: 130px;
     max-height: 130px;
@@ -410,9 +534,9 @@ section{
 }
 
 .btnAddToCart{
-    background-color: var(--white);
-    color: var(--orange);
-    border: 2px solid var(--orange);
+    background-color: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--black);
     width: 120px;
     border-radius: 5px;
     height: 30px;

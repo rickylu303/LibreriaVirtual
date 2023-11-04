@@ -260,7 +260,7 @@
         <div class="news">
             <img src="./sfx/images/newsletter.svg" alt="">
         </div>
-        <form action="">
+        <form class="form" action="">
             <h3>Subscribe for Latest Updates</h3>
             <input type="email" name="" placeholder="Enter your Email" id="" class="box">
             <input type="submit" value="Subscribe" class="btn">
@@ -271,17 +271,92 @@
 
         <h1 class=heading> <span>New Arrivals</span> </h1>
 
-        <div class="arrivals-slider">
+        <div class="swiper arrivals-slider">
 
-            <div class="wraper">
+            <div class="swiper-wrapper">
 
-                <a href="#" class="box">
+                <a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="./sfx/images/alice.png" alt="">
                     </div>
                     <div class="content">
                         <h3>New Arrivals</h3>
                         <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/hunger.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/hunger2.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/hunger3.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/lotr.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
                     </div>
                 </a>
 
@@ -289,6 +364,197 @@
 
         </div>
 
+        <div class="swiper arrivals-slider">
+
+            <div class="swiper-wrapper">
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/lotr2.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/lotr3.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/mistborn.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/mistborn2.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="swiper-slide box">
+                    <div class="image">
+                        <img src="./sfx/images/mistborn3.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>New Arrivals</h3>
+                        <div class="price">$15.99 <span>$20.99</span></div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="deal">
+        <div class="content">
+            <h3>Deal of the Day</h3>
+            <h1>Upto 50% off</h1>
+            <p>Take advantage of our incredible sales with discounts of up to 50% on a wide range of books. Don't miss the opportunity to save while enjoying the best quality!</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+
+        <div class="image">
+            <img src="./sfx/images/libreria.svg" alt="">
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <h1 class="heading"><span> Client's Reviews</span></h1>
+        <div class="swiper reviews-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userm.svg" alt="">
+                    <h3>John Deo</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userf.svg" alt="">
+                    <h3>Melissa Smith</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userm.svg" alt="">
+                    <h3>Michael Stuart</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userf.svg" alt="">
+                    <h3>Carla Mirai</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userm.svg" alt="">
+                    <h3>Luis Chang</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <img src="./sfx/images/userf.svg" alt="">
+                    <h3>Maria Chen</h3>
+                    <p>"I absolutely love the range of titles available on this platform! As a voracious reader, I appreciate the diversity of genres and the easy navigation. The seamless buying process and the ability to read on multiple devices make it my go-to place for all my reading needs."    </p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <?php 

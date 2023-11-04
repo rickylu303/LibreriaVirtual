@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav>
-        <div class="logo">VirtualLibrary</div>
+        <div class="logo"><span class="fa-brands fa-accusoft"></span> VirtualLibrary</div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fa-solid fa-bars"></i>

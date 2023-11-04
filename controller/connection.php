@@ -3,6 +3,7 @@
 class Connection {
     private $config;
     private $host;
+    private $port;
     private $username;
     private $password;
     private $database;
@@ -15,12 +16,13 @@ class Connection {
         $this->username = $this->config['database']['username'];
         $this->password = $this->config['database']['password'];
         $this->database = $this->config['database']['dbname'];
+        $this->port = $this->config['database']['port'];
         $this->connect();
     }
 
     private function connect() {
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->database}";
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->database}";
             $this->connection = new PDO($dsn, $this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

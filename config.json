@@ -3,7 +3,8 @@
     "host": "localhost",
     "username": "book_admin",
     "password": "OnePiece3D2Y",
-    "dbname": "libreriavirtual"
+    "dbname": "libreriavirtual",
+    "port": "4306"
   }
 }
   
