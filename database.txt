@@ -41,7 +41,7 @@ CREATE TABLE generos_literarios (
 -- Crear la tabla de libros
 CREATE TABLE libro (
     ID_libro INT AUTO_INCREMENT PRIMARY KEY,
-    Título VARCHAR(100),
+    Titulo VARCHAR(100),
     Precio DECIMAL(10, 2),
     Descripción TEXT,
     Sinopsis TEXT,
@@ -49,7 +49,9 @@ CREATE TABLE libro (
     image_url TEXT,
     pdf_url TEXT,
     ID_editorial INT,
-    FOREIGN KEY (ID_editorial) REFERENCES editorial(ID_editorial)
+    ID_autor INT
+    FOREIGN KEY (ID_editorial) REFERENCES editorial(ID_editorial),
+    FOREIGN KEY (ID_autor) REFERENCES autor(ID_autor)
 );
 
 -- Crear la tabla de relacion muchos a muchos entre libro y autores
@@ -250,28 +252,36 @@ DELIMITER ;
 DELIMITER //
 
 CREATE PROCEDURE CrearNuevoLibro(
-    IN p_Título VARCHAR(100),
+    IN p_Titulo VARCHAR(100),
     IN p_Precio DECIMAL(10, 2),
     IN p_Descripción TEXT,
     IN p_Sinopsis TEXT,
     IN p_Fecha_de_publicación DATE,
     IN p_ID_editorial INT,
     IN p_image_url VARCHAR(255), -- Nuevo campo image_url
-    IN p_pdf_url VARCHAR(255)    -- Nuevo campo pdf_url
+    IN p_pdf_url VARCHAR(255),    -- Nuevo campo pdf_url
+    IN p_Id_Autor INT
 )
 BEGIN
     DECLARE editorial_exists INT;
+    DECLARE autor_exist INT;
+
     -- Verificar si la editorial existe
     SELECT COUNT(*) INTO editorial_exists FROM editorial WHERE ID_editorial = p_ID_editorial;
+    SELECT COUNT(*) INTO autor_exist FROM autor WHERE ID_autor = p_Id_Autor;
 
     IF editorial_exists = 1 THEN
-        -- Insertar el nuevo libro si la editorial existe
-        INSERT INTO libro (Título, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial, image_url, pdf_url)
-        VALUES (p_Título, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial, p_image_url, p_pdf_url);
-        
-        SELECT 'Libro creado con éxito.' AS Resultado;
+        IF autor_exist = 1 THEN
+            -- Insertar el nuevo libro si la editorial existe
+            INSERT INTO libro (Titulo, Precio, Descripción, Sinopsis, Fecha_de_publicación, ID_editorial, image_url, pdf_url)
+            VALUES (p_Titulo, p_Precio, p_Descripción, p_Sinopsis, p_Fecha_de_publicación, p_ID_editorial, p_image_url, p_pdf_url);
+            
+            SELECT 'CREATION_SUCCESS' AS Resultado;
+        ELSE 
+            SELECT 'INVALID_AUTOR_ID' AS Resultado;
+        END IF;
     ELSE
-        SELECT 'La editorial especificada no existe. Asegúrate de que el ID de la editorial sea válido.' AS Resultado;
+        SELECT 'INVALID_EDITORIAL_ID' AS Resultado;
     END IF;
 END //
 
@@ -591,3 +601,32 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+
+-- Vistas
+
+-- Listar todos los libros con sus detalles
+CREATE VIEW view_ListLibrosDetail AS
+SELECT
+    l.ID_libro,
+    l.Titulo,
+    l.Precio,
+    l.Descripción,
+    l.Sinopsis,
+    l.Fecha_de_publicación as Fecha_de_publicacion,
+    l.image_url,
+    l.pdf_url,
+    a.ID_autor,
+    a.Nombre AS NombreAutor,
+    e.ID_editorial,
+    e.Nombre AS NombreEditorial,
+    gl.Nombre AS NombreGeneroLiterario,
+    gl.ID_genero AS IDGeneroLiterario,
+    AVG(uv.Puntuación) AS PromedioPuntuacion
+FROM libro l
+INNER JOIN autor a ON l.ID_autor = a.ID_autor
+INNER JOIN editorial e ON l.ID_editorial = e.ID_editorial
+LEFT JOIN generos_libros gll ON l.ID_libro = gll.ID_libro
+LEFT JOIN usuario_valoraciones uv ON l.ID_libro = uv.ID_libro
+LEFT JOIN generos_literarios gl ON gl.ID_genero = gll.ID_genero
+GROUP BY l.ID_libro;

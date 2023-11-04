@@ -170,6 +170,30 @@ class Usuario {
             return false;
         }
     }
+
+    public function loginUser($connection) {
+        // Escapar y sanitizar los valores de entrada (si es necesario)
+        $email = filter_var($this->email, FILTER_SANITIZE_EMAIL); // Sanitizar el correo electrónico
+    
+        // Consulta SQL para buscar al usuario por correo electrónico y contraseña
+        $query = "SELECT Nombre FROM usuario WHERE Correo_electronico = :email AND password = :password LIMIT 1";
+        
+        $stmt = $connection->prepare($query);
+        $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $this->password, PDO::PARAM_STR);
+    
+        $stmt->execute();
+    
+        // Obtener el resultado (nombre del usuario)
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($result) {
+            return $result['Nombre'];
+        } else {
+            return null;
+        }
+    }
+    
 }
 
 

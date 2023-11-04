@@ -7,30 +7,57 @@ $action = isset($_POST['action']) ? $_POST['action'] : null;
 
 $response = array();
 
-if($action != null && $action != '' && $action == 'createUser') {
-    $name = isset($_POST['name']) ? $_POST['name'] : null;
-    $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
-    $email = isset($_POST['email']) ? $_POST['email'] : null;
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
-    $password = isset($_POST['password']) ? $_POST['password'] : null;
-    $confirmPass = isset($_POST['confirmPass']) ? $_POST['confirmPass'] : null;
+if($action != null && $action != '') {
+    if($action == 'createUser'){
+        $name = isset($_POST['name']) ? $_POST['name'] : null;
+        $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
+        $email = isset($_POST['email']) ? $_POST['email'] : null;
+        $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
+        $password = isset($_POST['password']) ? $_POST['password'] : null;
+        $confirmPass = isset($_POST['confirmPass']) ? $_POST['confirmPass'] : null;
 
-    if($name != null && $lastname != null && $email != null && $phone != null && $phone != null && $password != null && $confirmPass != null && $password == $confirmPass) {
-        $connection = new Connection();
-        $userControl = new UsuarioController($connection->getConnection());
+        if($name != null && $lastname != null && $email != null && $phone != null && $phone != null && $password != null && $confirmPass != null && $password == $confirmPass) {
+            $connection = new Connection();
+            $userControl = new UsuarioController($connection->getConnection());
 
-        $newUser = $userControl->createNewUser($name, $lastname, $email, $password, $phone);
+            $newUser = $userControl->createNewUser($name, $lastname, $email, $password, $phone);
 
-        if($newUser == 'USER_CREATED'){
-            $response['success'] = $newUser;
-            $_SESSION['userstatus'] = 'logged';
-        }else if($newUser == 'ERROR_EMAIL_ALREADY_USED'){
-            $response['error'] = $newUser;
+            if($newUser == 'USER_CREATED'){
+                $response['success'] = $newUser;
+                $_SESSION['userstatus'] = 'logged';
+                $_SESSION['useremail'] = $email;
+                $_SESSION['username'] = $name;
+            }else if($newUser == 'ERROR_EMAIL_ALREADY_USED'){
+                $response['error'] = $newUser;
+            }else{
+                $response['error'] = 'INSERT_FAILED';
+            }
         }else{
-            $response['error'] = 'INSERT_FAILED';
+            $response['error'] = 'EMPTY_FIELDS';
         }
-    }else{
-        $response['error'] = 'EMPTY_FIELDS';
+
+    }
+
+    if($action == 'searchUser'){
+        $email = isset($_POST['email']) ? $_POST['email'] : null;
+        $password = isset($_POST['password']) ? $_POST['password'] : null;
+
+        if($email != null && $password != null){
+            $connection = new Connection();
+            $userControl = new UsuarioController($connection->getConnection());
+            $userName = $userControl->loginUser($email, $password);
+
+            if($userName != null){
+                $response['success'] = $userName;
+                $_SESSION['userstatus'] = 'logged';
+                $_SESSION['useremail'] = $email;
+                $_SESSION['username'] = $userName;
+            }else{
+                $response['error'] = 'INVALID_USER';
+            }
+        }else{
+            $response['error'] = 'EMPTY_FIELDS';
+        }
     }
 
     exit(json_encode($response));
@@ -89,6 +116,13 @@ class UsuarioController{
         }else{
             echo 'Hubo algun error al inactivar el usuario';
         }
+    }
+
+    public function loginUser($email, $password){
+        $usuario = new Usuario();
+        $usuario ->setEmail($email);
+        $usuario -> setPassword($password);
+        return $usuario->loginUser($this->connection);
     }
 }
 

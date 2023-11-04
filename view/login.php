@@ -38,15 +38,16 @@
             </div>
             <div class="loginForm">
                 <h1>Login</h1>
-                <form action="">
+                <form id="loginForm" action="">
                     <div class="tbox">
-                        <i class="fa-regular fa-user"></i><input type="text" name="Email" placeholder="Email*" required>
+                        <i class="fa-regular fa-user"></i><input id="email" type="text" name="Email" placeholder="Email*" required>
                     </div>
                     <div class="tbox">
-                        <i class="fa-solid fa-lock"></i><input type="password" name="Pass" placeholder="Password*" required>
+                        <i class="fa-solid fa-lock"></i><input id="password" type="password" name="Pass" placeholder="Password*" required>
                     </div>
                     <div class="pass"><a href="">Forgot Password?</a></div>
                     <button class="btn">Login</button>
+                    <div id="erroMessage" class="errorRegister"></div>
                     <div class="signup-link">Not a member? <a href="./register.php">Signup Now</a></div>
                 </form>
                 <ul class="social">
@@ -68,5 +69,7 @@
         include '../includes/footer_view.php';
         footer_view();
     ?>
+
+    <script src="../js/registerController.js"></script>
 </body>
 </html>

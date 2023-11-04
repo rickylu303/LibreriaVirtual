@@ -160,6 +160,13 @@
     cursor: pointer;
 }
 
+.errorRegister{
+    text-align: center;
+    margin-top: 5px;
+    color: #c60d11;
+    display: none;
+}
+
 /*Responsive Design*/
 @media(max-width: 768px){
     .login{

@@ -94,3 +94,153 @@ body{
 #next{
     left: 680px;
 }
+
+.bookCardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.bookCard {
+    text-align: left;
+    margin-top: 50px;
+}
+
+.bookCard img {
+    max-width: 200px;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+}
+
+.bookCardDetail{
+    background-color: var(--white);
+    height: 90%;
+    margin-top: 25px;
+}
+
+.cardBookTitle{
+    color: var(--black);
+    font-size: 25px;
+}
+
+.cardBookAutor{
+    color: var(--gray);
+    font-size: 17px;
+}
+
+.bookCardCalification{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookCardPrice{
+    margin-right: 15px;
+    color: green;
+}
+
+.cardBookSinopsis{
+    color: var(--gray);
+    font-size: 13px;
+    min-height: 130px;
+    max-height: 130px;
+    overflow: hidden;
+}
+
+.cardBookButtons{
+    display: flex;
+    text-align: center;
+    justify-content: left;
+    margin-top: 15px;
+}
+
+.btnDetails{
+    background-color: var(--white);
+    color: var(--gray);
+    border: 2px solid var(--gray);
+    width: 120px;
+    border-radius: 5px;
+    height: 30px;
+    transition: all ease 1s;
+}
+
+.btnAddToCart{
+    background-color: var(--white);
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    width: 120px;
+    border-radius: 5px;
+    height: 30px;
+    transition: all ease 1s;
+    margin-left: 10px;
+}
+
+.btnDetails:hover{
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.btnAddToCart:hover{
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.cardBookButtons a{
+    text-decoration: none;
+}
+
+.orderFilters{
+    display: flex;
+    justify-content: right;
+    margin-right: 50px;
+    margin-top: 25px;
+}
+
+.bookSearchBar{
+    
+}
+
+.orderbyFilters a{
+    margin-right: 25px;
+    color: var(--white);
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.orderbyFilters a::before,
+.orderbyFilters a::after{
+    border-bottom: 2px solid var(--orange);
+    content: '';
+    position: absolute;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.orderbyFilters a::before{
+    width: 90%;
+    right: 0px;
+    bottom: -5px;
+}
+
+.orderbyFilters a::after{
+    left: 0px;
+    bottom: -10px;
+    width: 60%;
+}
+
+.orderbyFilters a.selectedOrder::before,
+.orderbyFilters a:hover::before{
+    opacity: 1;
+    width: 70%;
+}
+
+.orderbyFilters a.selectedOrder::after,
+.orderbyFilters a:hover::after{
+    width: 40%;
+    opacity: 1;
+}

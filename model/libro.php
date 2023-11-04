@@ -10,6 +10,7 @@ class Libro {
     private $editorial; // Propiedad para la relación con la tabla "editorial"
     private $image_url;
     private $pdf_url;
+    private $autor;
 
     public function __construct() {
 
@@ -87,6 +88,14 @@ class Libro {
         $this->pdf_url = $pdf_url;
     }
 
+    public function getAutor(){
+        return $this->autor;
+    }
+
+    public function setAutor($autor) {
+        $this->autor = $autor;
+    }
+
     public function crearNuevoLibro($pdo) {
         // Escapar y sanitizar los valores de entrada (si es necesario)
         $titulo = $this->titulo;
@@ -97,9 +106,10 @@ class Libro {
         $idEditorial = $this->editorial->getID_editorial();
         $imageURL = $this->image_url;
         $pdfURL = $this->pdf_url;
+        $autor = $this->autor->getID_autor();
 
         // Llamar al procedimiento almacenado "CrearNuevoLibro"
-        $query = "CALL CrearNuevoLibro(:titulo, :precio, :descripcion, :sinopsis, :fechaPublicacion, :idEditorial, :imageURL, :pdfURL)";
+        $query = "CALL CrearNuevoLibro(:titulo, :precio, :descripcion, :sinopsis, :fechaPublicacion, :idEditorial, :imageURL, :pdfURL, :idAutor)";
         
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
@@ -110,6 +120,7 @@ class Libro {
         $stmt->bindParam(':idEditorial', $idEditorial, PDO::PARAM_INT);
         $stmt->bindParam(':imageURL', $imageURL, PDO::PARAM_STR);
         $stmt->bindParam(':pdfURL', $pdfURL, PDO::PARAM_STR);
+        $stmt->bindParam(':idAutor', $autor, PDO::PARAM_INT);
     
         if ($stmt->execute()) {
             return true;
@@ -117,6 +128,18 @@ class Libro {
             return false;
         }
     }
+
+    public function listAllBooks($pdo) {
+        $query = "SELECT * FROM view_ListLibrosDetail";
+        $stmt = $pdo->query($query);
+    
+        if ($stmt) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return null;
+        }
+    }
+    
     
 }
 
